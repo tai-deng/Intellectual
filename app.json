@@ -14,7 +14,11 @@
     "pages/chooseTaocan/chooseTaocan",
     "pages/changePay/changePay",
     "pages/index/payment/payment",
-    "pages/index/payment/order/order"
+    "pages/index/payment/order/order",
+    "pages/mine/bindIDCard/bindIDCard",
+    "pages/mine/safety/safety",
+    "pages/mine/changePhone/changePhone",
+    "pages/mine/changePassword/changePassword"
   ],
   "window": {
     "backgroundTextStyle": "light",

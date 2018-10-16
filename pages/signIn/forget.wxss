@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #fff;
+    padding-top: 35rpx;
 }
 .entry{
     width: 690rpx;
