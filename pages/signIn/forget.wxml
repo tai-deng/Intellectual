@@ -46,7 +46,7 @@
                 <image src="../img/logobig.png"></image>
                 <view class="done-text">密码修改成功</view>
             </view>
-            <navigator class="next row" open-type = 'navigateBack' >
+            <navigator url="/pages/signIn/signIn" open-type="reLaunch" hover-class="none" class="next row">
                 返回登录
             </navigator>
         </view>

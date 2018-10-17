@@ -3,6 +3,7 @@ import util from '../../utils/util.js'
 import cache from '../../utils/cache.js'
 import network from '../../utils/ajax.js'
 import {encrypt,decrypt,key} from '../../utils/safe.js'
+const app = getApp();
 // pages/signIn/signIn.js
 Page({
 
@@ -81,10 +82,12 @@ Page({
     }
   },
   init(){
-    if(cache.get('isLogin') == 1){
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
+    if(app.globalData.deal != 1){
+      if(cache.get('isLogin') == 1){
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+      }
     }
     let phone = cache.get('phone');
     let password = cache.get('password');

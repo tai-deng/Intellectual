@@ -16,10 +16,11 @@ const set = (key,value)=>{
     wx.setStorageSync(bf, temp)
 }
 
-const clear = ()=>{
+const clear = (cb)=>{
     wx.clearStorage({
-        complete(e){
-            console.log(e)
+        success(e){
+            if(typeof cb == 'function')
+            cb(e);
         }
     })
 }

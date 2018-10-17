@@ -1,6 +1,7 @@
 import util from '../../utils/util.js'
 import cache from '../../utils/cache.js'
 import network from '../../utils/ajax.js'
+const app = getApp();
 // pages/mine/mine.js
 Page({
   data: {
@@ -12,6 +13,7 @@ Page({
       'sysUser/123456',
       {id:cache.get('id')}).then((res)=>{
         if(res.meta.success){
+          console.log(res)
           if(res.data.workNumber){
             this.setData({data:res.data,done:true})
           }
@@ -41,15 +43,31 @@ Page({
       }),(()=>{}),'返回','确定','#ff5800','#ff5800')
     }
   },
+  // 登录 注册处理
+  onDeal(){
+    app.globalData.deal = 1;
+  },
   // 安全退出
   onQit(e){
-    console.log('退出')
+    cache.clear((e)=>{
+      wx.reLaunch({
+        url:'/pages/signIn/signIn'
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData();
+    let login;
+    let isBind = app.globalData.isBind;
+    if(isBind){
+      login = false;
+      this.getData();
+    }else{
+      login = true;
+    }
+    this.setData({login})
   },
 
   /**

@@ -24,17 +24,32 @@ Page({
     classsess:[],     // 班级
   },
   onLoad: function (option) {
-    this.getData();
+  },
+  onShow:function(){
+    if(!this.data.isDredge){
+      this.getData();
+    }
+  },
+  // 宽带支付
+  onKdpay(){
+    let status = this.clickJudge();
+    if(status){
+      wx.navigateTo({
+        url:"/pages/index/payment/payment"
+      })
+    }
   },
   // 获取数据
   getData(){
     // 查询是否填写完资料
+    let isBind;
     network.post(
       'isPerfect',
       {id:cache.get('id')})
     .then((res)=>{
       if(res.meta.success){
         // 保存个人资料到缓存
+        isBind = true;
         let siteFcode = res.data.site.fcode;
         let UserNum = res.data.workNumber;
         cache.set('siteFcode',siteFcode);
@@ -44,6 +59,7 @@ Page({
         this.setData({site:res.data.site,UserNum})
       }else{
         // 弹窗完善个人资料
+        isBind = false;
         this.setData({popup:true})
         // 学校
         network.post(
@@ -53,15 +69,30 @@ Page({
           }
         })
       }
+      app.globalData.isBind = isBind;
+      this.setData({isBind})
     })
+  },
+  // 更换套餐
+  onChangetc(e){
+    let status = this.clickJudge();
+    let broadbandData = this.data.broadbandData;
+    if(status){
+      wx.navigateTo({
+        url:`url="/pages/index/combo/combo?data=${broadbandData}`
+      })
+    }
+
   },
   // 查询宽带用户个人信息
   getBroadbandInfo(siteFcode,UserNum){
+    let isDredge=false;
     network.post(
       'Broadband/queryUsermsg',
       {id:cache.get('id'),siteFcode,UserNum})
     .then((res)=>{
       if(res.meta.success){
+        isDredge = true;
         if(res.data.periodLimitTime){
           res.data.periodLimitTime = util.formatres.data.periodLimitTime(new Date(res.data.periodLimitTime));
         }else{
@@ -70,13 +101,34 @@ Page({
         let broadbandData = JSON.stringify(res.data);
         this.setData({broadband:res.data,broadbandData})
       }else{
+        isDredge = false;
         util.showModal("提示",'您还未开通宽带业务，请先开户',true,()=>{
           wx.navigateTo({
             url:'/pages/chooseTaocan/chooseTaocan'
           })
         },()=>{},'取消','去开户','#ff5800','#ff5800')
       }
+      this.setData({isDredge})
     })
+  },
+  clickJudge(){
+    let isBind = this.data.isBind;
+    let isDredge =  this.data.isDredge;
+    if(!isBind){
+      this.setData({popup:true})
+      return false;
+    }else{
+      if(!isDredge){
+        util.showModal("提示",'您还未开通宽带业务，请先开户',true,()=>{
+          wx.navigateTo({
+            url:'/pages/chooseTaocan/chooseTaocan'
+          })
+        },()=>{},'取消','去开户','#ff5800','#ff5800');
+        return false;
+      }else{
+        return true;
+      }
+    }
   },
   // 学校选项数据处理
   _schoolData(data){
@@ -179,48 +231,50 @@ Page({
   onSubmit(e){
     let v = e.detail.value;
     let tag = e.detail.target.dataset.tag;
-    console.log(e);
-    if(tag == 1){
-      if(v.userid){
-        this.setData({join:true})
-      }else{
-        util.toast('请输入宽带账号！')
-      }
-    }
-    // 完善个人资料提交
-    if(tag == 2){
-      let siteCode = this.data.opValue;
-      let workNumber = this.data.workNumber;
-      let realname = v.name;
-      let deptName = this.data.deptName;
-      let className = this.data.className;
-      if(v.broadband !='' && siteCode !='' && realname != ''){
-        network.post(
-          'perfectInformation',
-          {
-            id:cache.get('id'),
-            siteCode,
-            realname,
-            deptName,
-            className,
-            workNumber
-          }
-        ).then((res)=>{
-          if(res.meta.success){
-            this.getData();
-            this.setData({popup:false});
-            cache.set('realname',realname);
-          }
-        });
-      }else{
-        if(!realname){
-          util.toast('请输入姓名！')
-        }
-        if(!v.broadband){
+    let status = this.clickJudge();
+    if(status){
+      if(tag == 1){
+        if(v.userid){
+          this.setData({join:true})
+        }else{
           util.toast('请输入宽带账号！')
         }
-        if(!siteCode){
-          util.toast('请选择学校！')
+      }
+      // 完善个人资料提交
+      if(tag == 2){
+        let siteCode = this.data.opValue;
+        let workNumber = this.data.workNumber;
+        let realname = v.name;
+        let deptName = this.data.deptName;
+        let className = this.data.className;
+        if(v.broadband !='' && siteCode !='' && realname != ''){
+          network.post(
+            'perfectInformation',
+            {
+              id:cache.get('id'),
+              siteCode,
+              realname,
+              deptName,
+              className,
+              workNumber
+            }
+          ).then((res)=>{
+            if(res.meta.success){
+              this.getData();
+              this.setData({popup:false});
+              cache.set('realname',realname);
+            }
+          });
+        }else{
+          if(!realname){
+            util.toast('请输入姓名！')
+          }
+          if(!v.broadband){
+            util.toast('请输入宽带账号！')
+          }
+          if(!siteCode){
+            util.toast('请选择学校！')
+          }
         }
       }
     }

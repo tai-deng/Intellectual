@@ -13,7 +13,7 @@
                     <view class="list-up-price">{{broadband.accountFee?broadband.accountFee:'0'}}元</view> 
                 </view></view>
             <navigator class="tapStyle list-i list-right column"url="/pages/index/integral/integral" open-type="navigate"><view class="list-right-v">缴费历史</view></navigator>
-            <navigator class="tapStyle list-i list-down column"url="/pages/index/payment/payment" open-type="navigate"><view class="list-down-v">宽带缴费</view></navigator>
+            <view class="tapStyle list-i list-down column" bindtap="onKdpay"><view class="list-down-v">宽带缴费</view></view>
             <navigator class="tapStyle list-i list-left column"url="/pages/index/explain/explain" open-type="navigate"><view class="list-left-v">资费说明</view></navigator>
             <view class="list-mid column">
                 <view class="list-mid-up">{{data.menu.tip}}</view>
@@ -43,12 +43,12 @@
             </view>
             <view class="bar-text">热水</view>
         </view>
-        <navigator class="menu-bar-i upward column"url="/pages/index/combo/combo?data={{broadbandData}}" open-type="navigate" hover-class="none">
+        <view bindtap="onChangetc" class="menu-bar-i upward column" open-type="navigate" hover-class="none">
             <view class="menu-bar-warp integral row">
                 <image src="../img/jf.png"></image>
             </view>
             <view class="bar-text">换套餐</view>
-        </navigator>
+        </view>
     </view>
     <view class="linber"></view>
     <view class="entry-title row">快速充值</view>

@@ -22,7 +22,7 @@
     <button class="login row" formType="submit" hover-class="none">
         立即注册
     </button>
-    <navigator class="row register" open-type="navigateBack" hover-class="none">
+    <navigator url="/pages/signIn/signIn" open-type="reLaunch" hover-class="none" class="row register">
         还没有账号?
         <view class="register_b">立即登录</view>
     </navigator>
