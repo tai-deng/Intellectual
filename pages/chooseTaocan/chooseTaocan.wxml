@@ -28,7 +28,7 @@
                     1、请牢记设置密码，如有遗忘，请去网络服务中心处理。
                 </view>
                 <view class="popUp-content-c-input row">
-                    <input type="text"value="{{passWord}}" bindinput="onInput"/>
+                    <input type="text"value="{{passWord}}" bindblur="onInput"/>
                 </view>
             </view>
             <view class="popUp-content-bar flexrow">

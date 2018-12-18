@@ -18,7 +18,13 @@
     "pages/mine/bindIDCard/bindIDCard",
     "pages/mine/safety/safety",
     "pages/mine/changePhone/changePhone",
-    "pages/mine/changePassword/changePassword"
+    "pages/mine/changePassword/changePassword",
+    "pages/index/repairRecordWorker/repairRecordWorker",
+    "pages/index/repairRecord/repairRecord",
+    "pages/index/repairRecord/myRepair",
+    "pages/index/repairDetail/repairDetail",
+    "pages/mine/feedback/feedback",
+    "pages/mine/feedback/feedbackList"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -44,5 +50,8 @@
         "selectedIconPath": "pages/img/mine-a.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx2ded7c2a06ef15ea"
+  ]
 }

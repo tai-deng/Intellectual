@@ -13,7 +13,7 @@ Page({
       'sysUser/123456',
       {id:cache.get('id')}).then((res)=>{
         if(res.meta.success){
-          console.log(res)
+          // console.log(res)
           if(res.data.workNumber){
             this.setData({data:res.data,done:true})
           }

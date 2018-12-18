@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.4.0",
 	"appid": "wxdacdc73df016e665",
 	"projectname": "Intellectual",
 	"debugOptions": {
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -59,7 +59,26 @@
 				{
 					"id": -1,
 					"name": "我的",
-					"pathName": "pages/mine/mine"
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "维修记录",
+					"pathName": "pages/index/repairRecordWorker/repairRecordWorker",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "故障报修",
+					"pathName": "pages/index/repairRecord/myRepair",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "报修详情",
+					"pathName": "pages/index/repairDetail/repairDetail",
+					"query": "orderId=40289186674db89f01674dcabfeb0000"
 				}
 			]
 		}

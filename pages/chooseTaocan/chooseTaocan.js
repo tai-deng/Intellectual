@@ -39,7 +39,7 @@ Page({
   // 获取密码
   onInput(e){
     let passWord = e.detail.value;
-    if(passWord.length > 3 || passWord.length < 16){
+    if(passWord.length < 3 || passWord.length > 16){
       passWord = ''
       util.toast('长度在3-16位之间')
     }

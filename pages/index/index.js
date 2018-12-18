@@ -23,8 +23,7 @@ Page({
     departments:[],   // 院系
     classsess:[],     // 班级
   },
-  onLoad: function (option) {
-  },
+  onLoad: function (option) {},
   onShow:function(){
     if(!this.data.isDredge){
       this.getData();
@@ -292,7 +291,7 @@ Page({
   onPopD(){
     this.setData({join:false})
   },
-  // 洗衣服、热水
+  // 开发中
   onLaundry(e){
     util.showModal('提示','此服务正在开发，敬请期待',false)
   },
@@ -359,6 +358,26 @@ Page({
         that.setData({click:true})
       })
     }
-
+  },
+  // 故障报修
+  service(){
+    let status = cache.get('juese')
+    let url = null;
+    if(status == '维修人员角色'){
+      url = '/pages/index/repairRecordWorker/repairRecordWorker'
+    }else{
+      url = '/pages/index/repairRecord/repairRecord'
+    }
+    wx.navigateTo({url})
+  },
+  // 热水
+  openAPP() {
+    let that = this;
+    wx.navigateToMiniProgram({
+      appId: 'wx2ded7c2a06ef15ea',
+      success(res) {
+        // that.setData({ open: false })
+      }
+    })
   },
 })

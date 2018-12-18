@@ -19,11 +19,11 @@
     margin-top: 22rpx;
 }
 .entry{
-    width: 540rpx;
+    width: 630rpx;
     height: 80rpx;
     border: 1px solid #e5e5e5;
     border-radius: 40rpx;
-    margin-left: 105rpx;
+    margin-left: 60rpx;
     margin-bottom: 30rpx;
 }
 .entry > image {
@@ -38,10 +38,10 @@
     color: #9a9a9a;
 }
 button{
-    width: 540rpx;
+    width: 630rpx;
     height: 80rpx;
     border-radius: 40rpx;
-    margin-left: 105rpx;
+    margin-left: 60rpx;
     font-size: 32rpx;
     color: #ffffff;
     margin-bottom: 25rpx;

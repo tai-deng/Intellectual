@@ -6,8 +6,7 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/');
-  // + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
 const formatNumber = n => {
@@ -47,8 +46,31 @@ cancelColor='#000000',confirmColor='#3cc51f')=>{
   })
 }
 
+const preview = (arr,item)=>{
+  wx.previewImage({
+    current: item,
+    urls: arr
+  })
+}
+
+const call = phone =>{
+  wx.makePhoneCall({
+    phoneNumber: phone
+  })
+}
+
+const scrool = (px,ms)=>{
+  wx.pageScrollTo({
+    scrollTop: px,
+    duration: ms
+  })
+}
+
 module.exports = {
   formatTime,
   toast,
   showModal,
+  preview,
+  call,
+  scrool
 }

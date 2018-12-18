@@ -61,6 +61,17 @@
             </view>
             {{data.classname}}
         </view>
+
+        <navigator url="/pages/mine/feedback/feedback" open-type="navigate"class="in-login-i rows">
+            <view class="in-login-i-l flexrow">
+                <view class="in-login-i-l-icon row">
+                    <image src='../img/pingjia.png'></image>
+                </view>
+                咨询与留言
+            </view>
+            希望您提供宝贵意见
+        </navigator>
+        
         <navigator url="/pages/mine/safety/safety" open-type="navigate"class="in-login-i m-more rows">
             <view class="in-login-i-l flexrow">
                 <view class="in-login-i-l-icon row">

@@ -25,6 +25,12 @@
     margin-right: 10rpx;
     margin-bottom: 10rpx;
 }
+.content-v-item-down {
+    width: 220rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .button{
     position: absolute;
     left: 35rpx;

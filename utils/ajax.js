@@ -2,8 +2,9 @@
 // 数据请求
 import cache from './cache.js'
 
-const API_URL = 'http://www.51hall.com/api/';
-//const url = "http://192.168.17.6:8083/";//彪哥的主机IP
+// const API_URL = 'http://www.51hall.com/api/';
+const API_URL = "http://192.168.17.6:8083/api/";//彪哥的主机IP
+const IMG_URL = 'http://qiniu.51hall.com/'
 
 // GET请求
 function GET (url, params, message, config) {
@@ -87,5 +88,6 @@ function request (url, params = {}, config,message = '加载中...',  method = '
     success: success,
     prompt: prompt,
     showModal: showModal,
+    img_url:IMG_URL
   }
   export default network

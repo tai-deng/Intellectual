@@ -20,6 +20,26 @@ Page({
   onLoad: function (options) {
     this.init();
   },
+  // loction
+  bindLoction() {
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success(res) {
+        const latitude = 26.873462020074626;
+        const longitude = 112.57541195337294;
+        wx.openLocation({
+          name:'111sdfsf',
+          address:'地址：费大幅度发斯蒂芬',
+          latitude,
+          longitude,
+          scale: 28,
+          success(res){
+          }
+        })
+        console.log(latitude)
+      }
+    })
+  },
   /**
    * 登录
    * @param {*} e 
@@ -39,7 +59,11 @@ Page({
           if(res.meta.success){
           cache.set('phone',phone);
           cache.set('password',password);
-
+          let juese = 'user'
+          if(res.data.roles){
+            juese = decrypt(res.data.roles[0],key);
+          }
+          cache.set("juese",juese);
           cache.set('token',decrypt(res.data.xtoken,key));
           cache.set('mobileno',decrypt(res.data.mobileno,key));
           cache.set('fcode',decrypt(res.data.fcode,key));
@@ -48,7 +72,6 @@ Page({
 
           // cache.set('realname',decrypt(res.data.realname,key));
           // cache.set('userType',decrypt(res.data.userType,key));
-          // cache.set('juese',res.data.juese);
           // cache.set('clientid',clientid); // 个推
           setTimeout(()=>{
             wx.switchTab({

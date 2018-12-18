@@ -17,7 +17,7 @@
             <navigator class="tapStyle list-i list-left column"url="/pages/index/explain/explain" open-type="navigate"><view class="list-left-v">资费说明</view></navigator>
             <view class="list-mid column">
                 <view class="list-mid-up">{{data.menu.tip}}</view>
-                <view class="list-mid-down">{{UserNum}}</view>
+                <view class="list-mid-down row">{{UserNum}}</view>
             </view>
         </view>
     </view>
@@ -25,19 +25,19 @@
     当前套餐：{{broadband.packageName}} 到期日：{{broadband.periodLimitTime}}
     </view>
     <view class="menu-bar flexrow">
-        <navigator class="menu-bar-i upward column"url="/pages/index/recharge/recharge" open-type="navigate" hover-class="none">
+        <view class="menu-bar-i upward column"bindtap="onLaundry">
             <view class="menu-bar-warp recharge row">
                 <image src="../img/hf.png"></image>
             </view>
             <view class="bar-text">话费充值</view>
-        </navigator>
-        <view class="menu-bar-i column"bindtap="onLaundry">
-            <view class="menu-bar-warp laundry row">
-                <image src="../img/xy.png"></image>
-            </view>
-            <view class="bar-text">洗衣服</view>
         </view>
-        <view class="menu-bar-i column"bindtap="onLaundry">
+        <view class="menu-bar-i column" bindtap='service'>
+            <view class="menu-bar-warp laundry row">
+                <image src="../img/repairs.png"></image>
+            </view>
+            <view class="bar-text">故障报修</view>
+        </view>
+        <view class="menu-bar-i column"bindtap="openAPP">
             <view class="menu-bar-warp water row">
                 <image src="../img/rs.png"></image>
             </view>
@@ -165,5 +165,11 @@
             </view>
         </view>
     </view>
+
+    <!-- <view class="popup-bg row"wx:if="{{open}}">
+        <view class="popup-content" bindtap="onApp">
+          确认
+        </view>
+    </view> -->
 </view>
 </form>
